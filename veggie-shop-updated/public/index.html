@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Veggie Shop</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Veggie Shop</h1>
+  </header>
+
+  <div id="login-section">
+    <h2>Login</h2>
+    <input type="text" id="user-name" placeholder="Enter your name" />
+    <input type="text" id="user-phone" placeholder="Enter your phone number" />
+    <button onclick="login()">Enter Shop</button>
+  </div>
+
+  <div id="shop-section" style="display: none;">
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search for vegetables...">
+    </div>
+
+    <div class="product-grid" id="product-grid">
+      <div class="product" data-name="Tomato" data-price="2">
+        <img src="https://via.placeholder.com/150" alt="Tomato" />
+        <h3>Tomato</h3>
+        <p>$2 / lb</p>
+        <button onclick="addToCart('Tomato', 2)">Add to Cart</button>
+      </div>
+      <div class="product" data-name="Potato" data-price="1">
+        <img src="https://via.placeholder.com/150" alt="Potato" />
+        <h3>Potato</h3>
+        <p>$1 / lb</p>
+        <button onclick="addToCart('Potato', 1)">Add to Cart</button>
+      </div>
+    </div>
+
+    <div id="cart">
+      <button onclick="openCart()">🛒 View Cart (<span id="cart-count">0</span>)</button>
+    </div>
+
+    <div id="cart-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeCart()">&times;</span>
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <p id="total"></p>
+        <button id="checkout-btn">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

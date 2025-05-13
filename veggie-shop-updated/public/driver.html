@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Driver Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Driver Dashboard</h1>
+  </header>
+  <div id="order-list">
+    <h2>Pending Orders</h2>
+    <ul id="orders"></ul>
+  </div>
+
+  <script>
+    async function fetchOrders() {
+      const res = await fetch('/orders');
+      const orders = await res.json();
+      const list = document.getElementById('orders');
+      list.innerHTML = '';
+      orders.forEach((order, index) => {
+        const li = document.createElement('li');
+        li.textContent = `#${index + 1}: ${order.itemCount} item(s) to ${order.address} (Name: ${order.name}, Phone: ${order.phone})`;
+        list.appendChild(li);
+      });
+    }
+    fetchOrders();
+    setInterval(fetchOrders, 5000);
+  </script>
+</body>
+</html>
